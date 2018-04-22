@@ -374,12 +374,11 @@ extern int vm_page_zero_count;
 extern vm_page_t vm_page_array;		/* First resident page in table */
 extern long vm_page_array_size;		/* number of vm_page_t's */
 extern long first_page;			/* first physical page number */
-
-//
-extern int number_pages_queued_for_flush;
-extern int active_to_inactive;
-extern int inactive_to_active;
-extern int inactive_to_cacheFree;
+/*here added the varibles */
+extern int page_flush_num;
+extern int act_inactive;
+extern int inactove_act;
+extern int inactive_cachefree;
 
 #define	VM_PAGE_IS_FREE(m)	(((m)->flags & PG_FREE) != 0)
 
