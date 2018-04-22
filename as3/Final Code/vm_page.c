@@ -2113,7 +2113,6 @@ vm_page_enqueue(int queue, vm_page_t m)
 	pq = &vm_phys_domain(m)->vmd_pagequeues[queue];
 	vm_pagequeue_lock(pq);
 	m->queue = queue;
-	//TAILQ_INSERT_TAIL(&pq->pq_pl, m, plinks.q);
 	TAILQ_INSERT_HEAD(&pq->pq_pl, m, plinks.q);
 	
 	vm_pagequeue_cnt_inc(pq);
@@ -2138,7 +2137,6 @@ vm_page_requeue(vm_page_t m)
 	pq = vm_page_pagequeue(m);
 	vm_pagequeue_lock(pq);
 	TAILQ_REMOVE(&pq->pq_pl, m, plinks.q);
-	//TAILQ_INSERT_TAIL(&pq->pq_pl, m, plinks.q);
 	TAILQ_INSERT_HEAD(&pq->pq_pl, m, plinks.q);
 	vm_pagequeue_unlock(pq);
 }
@@ -2160,7 +2158,6 @@ vm_page_requeue_locked(vm_page_t m)
 	pq = vm_page_pagequeue(m);
 	vm_pagequeue_assert_locked(pq);
 	TAILQ_REMOVE(&pq->pq_pl, m, plinks.q);
-	//TAILQ_INSERT_TAIL(&pq->pq_pl, m, plinks.q);
 	TAILQ_INSERT_HEAD(&pq->pq_pl, m, plinks.q);
 }
 
@@ -2472,7 +2469,6 @@ _vm_page_deactivate(vm_page_t m, int athead)
 		if (athead)
 			TAILQ_INSERT_HEAD(&pq->pq_pl, m, plinks.q);
 		else
-			//TAILQ_INSERT_TAIL(&pq->pq_pl, m, plinks.q);
 			TAILQ_INSERT_HEAD(&pq->pq_pl, m, plinks.q);
 
 		vm_pagequeue_cnt_inc(pq);
@@ -2488,7 +2484,7 @@ _vm_page_deactivate(vm_page_t m, int athead)
 void
 vm_page_deactivate(vm_page_t m)
 {
-	//_vm_page_deactivate(m, 0);
+	
 	_vm_page_deactivate(m, 1);
 }
 
