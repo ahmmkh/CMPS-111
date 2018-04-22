@@ -1504,12 +1504,12 @@ relock_queues:
 #endif
 	log(LOG_INFO, "number_Inactive_scanned: %d,number_active_scanned: %d, total_Scanned: %d, Number of active pages : %d, Number of inactive pages:%d,number_pages_queued_for_flush: %d,inactive_to_cacheFree: %d, inactive_to_active: %d,active_to_inactive: %d", 
 			number_Inactive_scanned, number_active_scanned, number_Inactive_scanned + number_active_scanned, cnt.v_active_count, cnt.v_inactive_count, 
-			number_pages_queued_for_flush, inactive_to_cacheFree, inactive_to_active, active_to_inactive);
+			pages_flush_num, inact_cashefree, inact_act, act_inact);
 	
-	active_to_inactive = 0;
-	inactive_to_active = 0;
-	number_pages_queued_for_flush  = 0;
-	inactive_to_cacheFree = 0;
+	act_inact = 0;
+	inact_act = 0;
+	pages_flush_num = 0;
+	inact_cashefree= 0;
 }
 
 static int vm_pageout_oom_vote;
