@@ -376,10 +376,10 @@ extern long vm_page_array_size;		/* number of vm_page_t's */
 extern long first_page;			/* first physical page number */
 
 //
-extern int number_pages_queued_for_flush;
-extern int active_to_inactive;
-extern int inactive_to_active;
-extern int inactive_to_cacheFree;
+extern int pages_flush_num;
+extern int act_inact;
+extern int inact_act;
+extern int inact_cashefree;
 
 #define	VM_PAGE_IS_FREE(m)	(((m)->flags & PG_FREE) != 0)
 
