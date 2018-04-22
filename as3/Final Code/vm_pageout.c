@@ -1471,7 +1471,7 @@ relock_queues:
 			if (m->act_count > ACT_MAX)
 				m->act_count = ACT_MAX;
 		} else {
-			//m->act_count -= min(m->act_count, ACT_DECLINE);
+			/*halved instead of subtracted*/
 			m->act_count = m->act_count/2;
 			act_delta = m->act_count;
 		}
